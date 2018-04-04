@@ -42,9 +42,33 @@ public class SinglyLinkedList {
 		} else {
 			NodeSLL temp = root;
 			NodeSLL prev = null;
+			NodeSLL next = null;
 			
-			prev = temp.next;
-			prev.next = temp;
+			while(temp != null) {
+				/*next = temp.next;
+				prev = temp;
+				
+				temp = next.next;
+				next.next = prev;
+				
+				if (prev == root) {
+					prev.next = null; 
+				} else {
+					
+				}*/
+				
+				next = temp.next;
+				temp.next = prev;
+				prev = temp;
+				temp = next;
+				
+				
+			}
+			
+			root = prev;
+			
+			//prev = temp.next;
+			///prev.next = temp;
 			//temp.next = 
 			//r 
 			//-> n -> n-> n-> n -> NULL
