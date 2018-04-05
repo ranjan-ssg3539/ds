@@ -1,7 +1,9 @@
 package prac.stacks;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class StackUsingQueue1 {
@@ -9,7 +11,6 @@ public class StackUsingQueue1 {
 	
 	StackUsingQueue1() {
 		q1 = new LinkedList<Integer>();
-		q1.add(1);
 		q2 = new LinkedList<Integer>();
 	}
 	
@@ -27,12 +28,17 @@ public class StackUsingQueue1 {
 		q2 = temp;
 	}
 	
+	void pop() {
+		q1.remove();
+	}
+	
 	void display() {
-		System.out.println("The stack elements are:");
+		System.out.println("\nThe stack elements are:");
 		//Collections.reverse(q1);
-		List l = q;
-		for (Integer integer : q1) {
-			System.out.println(integer);
+		List<Integer> l = new ArrayList<Integer>(q1);
+		Collections.reverse(l);
+		for (Integer integer : l) {
+			System.out.print(integer + " ");
 		}
 	}
 
