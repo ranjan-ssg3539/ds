@@ -24,13 +24,39 @@ public class SinglyLinkedList {
 		}
 	}
 	
+	NodeSLL deleteNodeWithValue(NodeSLL root, int val) {
+		if (root == null) {
+			System.out.println("List empty");
+			return null;
+		} else {
+			NodeSLL temp = root;
+			NodeSLL prev = null, next = null;
+			while (temp != null) {
+				next = temp.next;
+				if (temp.data == val) {
+					if (temp == root) {
+						root = temp.next;
+					} else {
+						prev.next = next;
+					}
+					break;
+				}
+				prev = temp;
+				temp = next;
+			}
+		}
+		
+		return root;
+	}
+	
 	void display(NodeSLL r) {
+		System.out.println("\nDisplaying Linked list elements:");
 		if (r == null) {
 			System.out.println("Empty list");
 		} else {
 			NodeSLL temp = r;
 			while (temp != null) {
-				System.out.println(temp.data);
+				System.out.print(temp.data + " ");
 				temp = temp.next;
 			}
 		}
@@ -73,6 +99,29 @@ public class SinglyLinkedList {
 			//r 
 			//-> n -> n-> n-> n -> NULL
 		}
+	}
+	
+	public NodeSLL mergeSortedList(NodeSLL root1, NodeSLL root2) {
+		NodeSLL sortedRoot = new NodeSLL();
+		NodeSLL sortedNode = sortedRoot;
+		NodeSLL temp1 = root1, temp2 = root2;
+		while (temp1 != null && temp2 != null) {
+			if (temp1.data < temp2.data) {
+				sortedNode.next = temp1;
+				temp1 = temp1.next;
+			} else {
+				sortedNode.next = temp2;
+				temp2 = temp2.next;
+			}
+			sortedNode = sortedNode.next;
+		}
+		if (temp1 == null) {
+			sortedNode.next = temp2;
+		} else {
+			sortedNode.next = temp1;
+		}
+		
+		return sortedRoot.next ;
 	}
 	
 }
