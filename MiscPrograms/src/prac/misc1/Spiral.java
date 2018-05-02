@@ -1,8 +1,51 @@
 package prac.misc1;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.TreeSet;
+
+final class C {
+	private final int i; private final String s; private final List<String> list;
+	public C(int i, String s, List<String> list) {
+		this.i= i ;
+		this.s= s;
+		this.list = list;
+	}
+	public int getI() {
+		return i;
+	}
+	public String getS() {
+		return s;
+	}
+	public List<String> getList() {
+		//return Collections.unmodifiableList(list); // -> throws java.lang.UnsupportedOperationException
+		//return list;
+		return new ArrayList<String>(this.list);
+	}
+	
+	
+	//no setter
+}
+
 public class Spiral {
 
 	public static void main(String[] args) {
+		ArrayList<String> ar = new ArrayList<String>();
+		ar.add("aa");ar.add("bb");
+		C c = new C(1, "A", ar);
+		System.out.println(c.getI());
+		System.out.println(c.getS());
+		
+		c.getList().add("cc");
+		for(String s : c.getList()) {
+			System.out.println(s);
+		}
+		
+		
+		HashSet f;
+		TreeSet ts;
 		int xLength = 5, yLength = 5;
 		int arr[][] = new int[xLength][yLength];
 		arr[0][0] =  0;arr[0][1] =  1;arr[0][2] =  2;arr[0][3] =  3;arr[0][4] =  4;
